@@ -1,0 +1,18 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-unused-vars": "warn"
+  }
+}
+
+// "parserOptions": {
+//     "ecmaFeatures": {
+//         "jsx": true
+//     },
+//     "ecmaVersion": 11,
+//     "sourceType": "module"
+// },
