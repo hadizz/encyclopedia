@@ -44,7 +44,7 @@ component-centric file layout
 ------- ResultItem.jsx
 ----+ Country/
 ------+ __tests__
---------- SearchBar.test.jsx
+--------- Info.test.jsx
 ------- index.jsx
 ------- index.css
 ------- Info.jsx
