@@ -5,14 +5,10 @@
     "browser": true
   },
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "react/jsx-filename-extension": "off",
+    "no-alert": "off",
+    "no-console": "off",
+    "no-plusplus": "off"
   }
 }
-
-// "parserOptions": {
-//     "ecmaFeatures": {
-//         "jsx": true
-//     },
-//     "ecmaVersion": 11,
-//     "sourceType": "module"
-// },
