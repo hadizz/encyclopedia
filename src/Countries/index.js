@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Route } from 'react-router-dom';
+import Search from '../Search';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -32,11 +34,13 @@ function Countries() {
 
   return (
     <div>
+      <Link to="/">Back to Search</Link>
       {loading ? (
         <Loading />
       ) : (
         countries.map((c) => <Country name={c.name} flag={c.flag} />)
       )}
+      <Route path="/" component={Search} />
     </div>
   );
 }
