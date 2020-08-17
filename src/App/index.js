@@ -1,22 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Search from '../Search';
 import Countries from '../Countries';
 
+import Wrapper from './Components';
+
 const App = () => {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Search</Link>
-            </li>
-            <li>
-              <Link to="/countries">All Countries</Link>
-            </li>
-          </ul>
-        </nav>
+    <Wrapper>
+      <Router>
         <Switch>
           <Route path="/countries">
             <Countries />
@@ -25,8 +17,8 @@ const App = () => {
             <Search />
           </Route>
         </Switch>
-      </div>
-    </Router>
+      </Router>
+    </Wrapper>
   );
 };
 
