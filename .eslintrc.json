@@ -6,6 +6,9 @@
   },
   "rules": {
     "no-unused-vars": "warn",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "no-alert": "off",
+    "no-console": "off",
+    "no-plusplus": "off"
   }
 }
