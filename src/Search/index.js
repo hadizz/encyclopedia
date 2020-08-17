@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import Results from './Results';
 
 const Search = () => {
   const [state, setState] = useState('');
@@ -37,31 +37,6 @@ const Search = () => {
       .catch((err) => setMessage(`${err}`));
   };
 
-  const Country = ({ name, flag }) => {
-    return (
-      <div>
-        <img src={flag} alt={`flag of ${name}`} width="50" />
-        <span>{name}</span>
-      </div>
-    );
-  };
-  Country.propTypes = {
-    name: PropTypes.string.isRequired,
-    flag: PropTypes.string.isRequired,
-  };
-
-  const Results = () => {
-    return (
-      <div>
-        {loading ? (
-          <p>{message}</p>
-        ) : (
-          results.map((c) => <Country name={c.name} flag={c.flag} />)
-        )}
-      </div>
-    );
-  };
-
   return (
     <div>
       <h1>search</h1>
@@ -83,7 +58,9 @@ const Search = () => {
 
       <br />
 
-      {clicked && <Results />}
+      {clicked && (
+        <Results results={results} loading={loading} message={message} />
+      )}
     </div>
   );
 };
