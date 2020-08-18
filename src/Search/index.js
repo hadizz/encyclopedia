@@ -19,26 +19,31 @@ const Search = () => {
   const handleClick = (event) => {
     event.preventDefault();
     setClicked(true);
-    setLoading(true);
-    fetch(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(
-            `${res.status} : ${
-              res.status === 404
-                ? 'cant find any country with the given query '
-                : 'something went wrong'
-            }`
-          );
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log('[search] : inside fetch : ', data);
-        setResults(data);
-        setLoading(false);
-      })
-      .catch((err) => setMessage(`${err}`));
+    if (state.trim() === '') {
+      setState('');
+      setMessage('Please Type Something');
+    } else {
+      setLoading(true);
+      fetch(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(
+              `${res.status} : ${
+                res.status === 404
+                  ? 'cant find any country with the given query '
+                  : 'something went wrong'
+              }`
+            );
+          }
+          return res.json();
+        })
+        .then((data) => {
+          console.log('[search] : inside fetch : ', data);
+          setResults(data);
+          setLoading(false);
+        })
+        .catch((err) => setMessage(`${err}`));
+    }
   };
   // #endregion
 
@@ -61,10 +66,6 @@ const Search = () => {
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
       </div>
-      <br />
-      <small>
-        {clicked ? `searching results for "${state}"` : 'type something'}
-      </small>
 
       <br />
 
