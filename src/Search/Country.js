@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CountryWrapper, FlexRow, FlagIcon, Arrow } from './Components';
+import { CountryWrapper, FlexRow, FlagIcon, Arrow } from '../Components';
 
 const Country = ({ name, flag }) => {
   return (
