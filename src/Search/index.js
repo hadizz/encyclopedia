@@ -66,7 +66,7 @@ const Search = () => {
         <H1>Search</H1>
         <StyledLink to="/countries">All Countries</StyledLink>
       </HeaderSection>
-      <form>
+      <div>
         <Input
           id="query"
           type="text"
@@ -78,7 +78,7 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </form>
+      </div>
 
       <br />
 
