@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Results from './Results';
+import { useLocation, useHistory } from 'react-router-dom';
 import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
+import ShowResults from './ShowResults';
 
 const Search = () => {
   // #region states
+  const location = useLocation();
+  const history = useHistory();
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,19 +24,19 @@ const Search = () => {
     event.preventDefault();
     setLoading(true);
     setError(false);
-    setResults([]);
 
     if (state.trim() === '') {
+      setResults([]);
       setState('');
       setLoading(false);
       setError(true);
       setErrorData({ status: 'Empty Field', message: '' });
     } else {
       axios
-        .get(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
+        .get(
+          `https://restcountries.eu/rest/v2/name/${state}?fields=name;flag;alpha2Code`
+        )
         .then((res) => {
-          console.log('[axios/ then res] response is : ', res);
-
           if (res.status !== 200) {
             throw new Error(res.statusText);
           }
@@ -41,12 +44,11 @@ const Search = () => {
           return res.data;
         })
         .then((data) => {
-          console.log('[axios/ then data] : inside fetch : ', data);
           setResults(data);
           setLoading(false);
         })
         .catch((err) => {
-          console.log('[axios/ then err] : ', err.response);
+          setResults([]);
           setLoading(false);
           setError(true);
           setErrorData({
@@ -58,13 +60,49 @@ const Search = () => {
   };
   // #endregion
 
+  React.useEffect(() => {
+    console.log('hello, state : ', location.state);
+    console.log(
+      'location.state === undefined : ',
+      location.state === undefined
+    );
+  }, []);
+
+  React.useEffect(() => {
+    console.log('--------------------');
+    console.log('results called');
+    console.log('results :', results);
+    if (location.state !== undefined) {
+      console.log('results changed ? ', results === location.state.seenResults);
+      console.log('location.state.seenResults :', location.state.seenResults);
+    }
+  }, [results]);
+
   return (
     <div>
       <HeaderSection>
         <H1>Search</H1>
-        <StyledLink to="/countries">All Countries</StyledLink>
+        <StyledLink
+          to="/country"
+          onClick={() => {
+            if (location.state !== undefined) {
+              history.push({
+                pathName: '/',
+                state: {
+                  seenResults: location.state.seenResults,
+                },
+              });
+            } else {
+              history.push({
+                pathName: '/',
+              });
+            }
+          }}
+        >
+          All Countries
+        </StyledLink>
       </HeaderSection>
-      <form>
+      <div>
         <Input
           id="query"
           type="text"
@@ -76,15 +114,14 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </form>
+      </div>
 
-      <br />
-
-      <Results
+      <ShowResults
         results={results}
         loading={loading}
         error={error}
         errorData={errorData}
+        loc={location}
       />
     </div>
   );
