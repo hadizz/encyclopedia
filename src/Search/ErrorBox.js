@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { ErrorWrapper, ErrorH3, ErrorP } from './Components';
 
 const msg = (data) => {
-  console.log('data is : ', data);
   switch (data.status) {
     case 'Empty Field':
       return 'Please Type Something';
@@ -17,7 +16,6 @@ const msg = (data) => {
 };
 
 const ErrorBox = ({ errorData }) => {
-  console.log('type in error box:', errorData);
   ErrorBox.propTypes = {
     errorData: PropTypes.arrayOf(
       PropTypes.shape({

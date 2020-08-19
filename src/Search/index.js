@@ -34,8 +34,6 @@ const Search = () => {
           `https://restcountries.eu/rest/v2/name/${state}?fields=name;flag;alpha2Code`
         )
         .then((res) => {
-          console.log('[axios/ then res] response is : ', res);
-
           if (res.status !== 200) {
             throw new Error(res.statusText);
           }
@@ -43,12 +41,10 @@ const Search = () => {
           return res.data;
         })
         .then((data) => {
-          console.log('[axios/ then data] : inside fetch : ', data);
           setResults(data);
           setLoading(false);
         })
         .catch((err) => {
-          console.log('[axios/ then err] : ', err.response);
           setLoading(false);
           setError(true);
           setErrorData({
