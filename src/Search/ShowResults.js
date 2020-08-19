@@ -4,14 +4,6 @@ import ErrorBox from './ErrorBox';
 import Results from './Results';
 
 const ShowResults = ({ loading, error, results, loc, errorData }) => {
-  const l = loc.state === undefined;
-  console.log(
-    'showresults:',
-    JSON.stringify({ loading, error, results, errorData }, null, 5),
-    'loc.state:',
-    l
-  );
-
   if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
 
   if (error) return <ErrorBox errorData={errorData} />;
