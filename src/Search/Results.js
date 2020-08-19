@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Country from './Country';
 import ErrorBox from './ErrorBox';
+import CountryPage from '../CountryPage';
 
 const Results = ({ results, loading, error, errorData }) => {
   if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
@@ -9,7 +11,7 @@ const Results = ({ results, loading, error, errorData }) => {
   if (error) return <ErrorBox errorData={errorData} />;
 
   return (
-    <div>
+    <Router>
       {results.length === 0 ? (
         <p>
           You Can Easily Find Countries By Their Name
@@ -18,9 +20,18 @@ const Results = ({ results, loading, error, errorData }) => {
           </span>
         </p>
       ) : (
-        results.map((c) => <Country name={c.name} flag={c.flag} />)
+        results.map((c) => (
+          <Link to={`/country/${c.alpha2Code}`}>
+            <Country name={c.name} flag={c.flag} />
+          </Link>
+        ))
       )}
-    </div>
+
+      <Switch>
+        {/* eslint-disable-next-line */}
+        <Route path="/country/:code" children={<CountryPage />} />
+      </Switch>
+    </Router>
   );
 };
 

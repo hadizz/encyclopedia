@@ -30,7 +30,9 @@ const Search = () => {
       setErrorData({ status: 'Empty Field', message: '' });
     } else {
       axios
-        .get(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
+        .get(
+          `https://restcountries.eu/rest/v2/name/${state}?fields=name;flag;alpha2Code`
+        )
         .then((res) => {
           console.log('[axios/ then res] response is : ', res);
 
