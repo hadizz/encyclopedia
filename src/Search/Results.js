@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Country from './Country';
 import ErrorBox from './ErrorBox';
 import CountryPage from '../CountryPage';
 
 const Results = ({ results, loading, error, errorData }) => {
+  const history = useHistory();
+
   if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
 
   if (error) return <ErrorBox errorData={errorData} />;
@@ -21,7 +23,12 @@ const Results = ({ results, loading, error, errorData }) => {
         </p>
       ) : (
         results.map((c) => (
-          <Link to={`/country/${c.alpha2Code}`}>
+          <Link
+            to={`/country/${c.alpha2Code}`}
+            onClick={() => {
+              history.push({ pathName: '/', state: { seenResults: results } });
+            }}
+          >
             <Country name={c.name} flag={c.flag} />
           </Link>
         ))
