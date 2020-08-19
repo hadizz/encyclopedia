@@ -78,7 +78,9 @@ export const Arrow = styled.div`
     `;
     }
     return `
-    border-color: blue;
+    height: 13px;
+    width: 13px;
+    border-color: #007afd;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     `;
@@ -195,7 +197,7 @@ export const DataValue = styled.span`
 export const CPHeader = styled.div`
   display: flex;
   background-color: white;
-  padding: 12px 10px;
+  padding: 12px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
@@ -205,13 +207,22 @@ export const CPHeaderTitle = styled.div`
 `;
 
 export const BackSearchBtn = styled(Link)`
+  margin-right: auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  color: #007afd;
+  text-decoration: none;
 `;
 export const BackSearchT = styled.span`
   font-weight: 700;
   font-size: 16px;
   margin-left: 1px;
+`;
+
+export const EmptyT = styled.div`
+  margin-left: auto;
+  visibility: hidden;
 `;
 
 export default Button;
