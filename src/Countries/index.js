@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import CountryItem from '../Components/CountryItem';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -8,7 +8,7 @@ function Countries() {
   const history = useHistory();
 
   useEffect(() => {
-    fetch('https://restcountries.eu/rest/v2/all?fields=name;flag')
+    fetch('https://restcountries.eu/rest/v2/all?fields=name;flag;alpha2Code')
       .then((res) => res.json())
       .then((data) => {
         setCountries(data);
@@ -16,19 +16,6 @@ function Countries() {
       })
       .catch((err) => alert('error in fetching : ', err));
   }, []);
-
-  const Country = ({ name, flag }) => {
-    return (
-      <div>
-        <img src={flag} alt={`flag of ${name}`} width="50" />
-        <span>{name}</span>
-      </div>
-    );
-  };
-  Country.propTypes = {
-    name: PropTypes.string.isRequired,
-    flag: PropTypes.string.isRequired,
-  };
 
   const Loading = () => <p>loading</p>;
 
@@ -40,7 +27,14 @@ function Countries() {
       {loading ? (
         <Loading />
       ) : (
-        countries.map((c) => <Country name={c.name} flag={c.flag} />)
+        countries.map((c) => (
+          <Link
+            to={`/country/${c.alpha2Code}`}
+            // onClick={() => history.push({ pathName: '/country' })}
+          >
+            <CountryItem name={c.name} flag={c.flag} />
+          </Link>
+        ))
       )}
     </div>
   );
