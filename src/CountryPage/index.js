@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const CountryPage = () => {
   const history = useHistory();
@@ -11,11 +12,11 @@ const CountryPage = () => {
   React.useEffect(() => {
     async function fetchCountryDetails() {
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://restcountries.eu/rest/v2/alpha/${code}`
         );
 
-        const json = await response.json();
+        const json = await response.data;
         console.log('fetch data  ', json);
 
         let value;
