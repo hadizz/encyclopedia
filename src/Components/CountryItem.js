@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CountryWrapper, FlexRow, FlagIcon, Arrow } from './Components';
+import { CountryWrapper, FlexRow, FlagIcon, Arrow } from './index';
 
-const Country = ({ name, flag }) => {
+const CountryItem = ({ name, flag }) => {
   return (
     <CountryWrapper>
       <FlexRow>
@@ -13,9 +13,9 @@ const Country = ({ name, flag }) => {
     </CountryWrapper>
   );
 };
-Country.propTypes = {
+CountryItem.propTypes = {
   name: PropTypes.string.isRequired,
   flag: PropTypes.string.isRequired,
 };
 
-export default Country;
+export default CountryItem;

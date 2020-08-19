@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useHistory } from 'react-router-dom';
-import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
+import Button, { Input, H1, HeaderSection, StyledLink } from '../Components';
 import ShowResults from './ShowResults';
 
 const Search = () => {
