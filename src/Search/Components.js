@@ -85,6 +85,7 @@ export const Arrow = styled.div`
 `;
 
 export const ErrorWrapper = styled.div`
+  margin-top: 1rem;
   width: 100%;
   padding: 20px;
   background-color: rgba(255, 0, 0, 0.6);
