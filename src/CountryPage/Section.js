@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import {
   SectionWrapper,
   DataTableHeader,
@@ -17,7 +19,7 @@ function Section({ header, data }) {
         {data &&
           Object.keys(data).map((key, index) => {
             return (
-              <DataBox>
+              <DataBox key={index}>
                 <DataName>{key}</DataName>
                 <DataValue>{data[key]}</DataValue>
               </DataBox>
@@ -27,5 +29,8 @@ function Section({ header, data }) {
     </SectionWrapper>
   );
 }
-
+Section.propTypes = {
+  header: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+};
 export default Section;
