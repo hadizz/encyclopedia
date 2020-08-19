@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all?fields=name;flag')
@@ -33,7 +34,9 @@ function Countries() {
 
   return (
     <div>
-      <Link to="/">Back to Search</Link>
+      <button onClick={() => history.goBack()} type="button">
+        go back to search page
+      </button>
       {loading ? (
         <Loading />
       ) : (

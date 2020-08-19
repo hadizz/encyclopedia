@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
 import ShowResults from './ShowResults';
 
 const Search = () => {
   // #region states
   const location = useLocation();
+  const history = useHistory();
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -81,7 +82,25 @@ const Search = () => {
     <div>
       <HeaderSection>
         <H1>Search</H1>
-        <StyledLink to="/country">All Countries</StyledLink>
+        <StyledLink
+          to="/country"
+          onClick={() => {
+            if (location.state !== undefined) {
+              history.push({
+                pathName: '/',
+                state: {
+                  seenResults: location.state.seenResults,
+                },
+              });
+            } else {
+              history.push({
+                pathName: '/',
+              });
+            }
+          }}
+        >
+          All Countries
+        </StyledLink>
       </HeaderSection>
       <div>
         <Input
