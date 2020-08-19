@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ErrorWrapper,
-  ErrorH3,
-  ErrorP,
-  ErrorHeader,
-  CloseIcon,
-} from './Components';
+import { ErrorWrapper, ErrorH3, ErrorP } from './Components';
 
-const msg = (t) => {
-  console.log('t is : ', t);
-  switch (t) {
+const msg = (data) => {
+  console.log('data is : ', data);
+  switch (data.status) {
     case 'Empty Field':
       return 'Please Type Something';
 
@@ -18,14 +12,19 @@ const msg = (t) => {
       return "Can't find any Country";
 
     default:
-      return 'Unknown Error';
+      return data.message;
   }
 };
 
-const ErrorBox = ({ errorType }) => {
-  console.log('type in error box:', errorType);
+const ErrorBox = ({ errorData }) => {
+  console.log('type in error box:', errorData);
   ErrorBox.propTypes = {
-    errorType: PropTypes.string.isRequired,
+    errorData: PropTypes.arrayOf(
+      PropTypes.shape({
+        status: PropTypes.string,
+        message: PropTypes.string,
+      })
+    ).isRequired,
   };
 
   return (
@@ -33,9 +32,9 @@ const ErrorBox = ({ errorType }) => {
       <ErrorH3>
         Error:
         {` `}
-        {errorType}
+        {errorData.status}
       </ErrorH3>
-      <ErrorP>{msg(errorType)}</ErrorP>
+      <ErrorP>{msg(errorData)}</ErrorP>
     </ErrorWrapper>
   );
 };
