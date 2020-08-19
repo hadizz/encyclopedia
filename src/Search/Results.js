@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import CountryItem from '../Components/CountryItem';
+import { NDLink } from '../Components';
 
 const Results = ({ results, seen }) => {
   const history = useHistory();
@@ -12,7 +13,7 @@ const Results = ({ results, seen }) => {
       {seen && <h4>showing previous results</h4>}
       <div>
         {results.map((c) => (
-          <Link
+          <NDLink
             to={`/country/${c.alpha2Code}`}
             onClick={() => {
               history.push({
@@ -22,7 +23,7 @@ const Results = ({ results, seen }) => {
             }}
           >
             <CountryItem name={c.name} flag={c.flag} />
-          </Link>
+          </NDLink>
         ))}
       </div>
     </div>

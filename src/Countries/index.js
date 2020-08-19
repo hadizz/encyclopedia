@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import CountryItem from '../Components/CountryItem';
+import { NDLink } from '../Components';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -28,12 +29,12 @@ function Countries() {
         <Loading />
       ) : (
         countries.map((c) => (
-          <Link
+          <NDLink
             to={`/country/${c.alpha2Code}`}
             // onClick={() => history.push({ pathName: '/country' })}
           >
             <CountryItem name={c.name} flag={c.flag} />
-          </Link>
+          </NDLink>
         ))
       )}
     </div>

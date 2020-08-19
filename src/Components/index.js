@@ -42,6 +42,12 @@ export const StyledLink = styled(Link)`
   margin-bottom: 0.3rem;
 `;
 
+// no decorate link
+export const NDLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export const CountryWrapper = styled.div`
   padding: 7px 7px;
   display: flex;
