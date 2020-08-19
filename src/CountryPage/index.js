@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { CountryPageWrapper, Flag } from '../Components';
 import Section from './Section';
+import Header from './Header';
 
 const CountryPage = () => {
   const history = useHistory();
@@ -61,12 +62,13 @@ const CountryPage = () => {
 
   return (
     <CountryPageWrapper>
-      <button onClick={() => history.goBack()} type="button">
+      {/* <button onClick={() => history.goBack()} type="button">
         go back
       </button>
-      <br />
+      <br /> */}
       {!loading && (
         <>
+          <Header />
           <Flag src={details.flag} alt={`flag of ${details.name}`} />
           <Section header="information" data={infoSectionData} />
         </>

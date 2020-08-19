@@ -78,6 +78,7 @@ export const Arrow = styled.div`
     `;
     }
     return `
+    border-color: blue;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     `;
@@ -189,6 +190,28 @@ export const DataValue = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: rgb(0, 0, 0, 0.5);
+`;
+
+export const CPHeader = styled.div`
+  display: flex;
+  background-color: white;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+export const CPHeaderTitle = styled.div`
+  font-weight: 500;
+  font-size: 18px;
+`;
+
+export const BackSearchBtn = styled(Link)`
+  display: flex;
+  flex-direction: row;
+`;
+export const BackSearchT = styled.span`
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 1px;
 `;
 
 export default Button;
