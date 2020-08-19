@@ -84,4 +84,53 @@ export const Arrow = styled.div`
   }}
 `;
 
+export const ErrorWrapper = styled.div`
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(255, 0, 0, 0.6);
+  border-radius: 6px;
+  color: white;
+`;
+
+export const ErrorH3 = styled.h3`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+`;
+
+export const ErrorP = styled.p`
+  margin: 0;
+  font-size: 14px;
+`;
+
+export const ErrorHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const CloseIcon = styled.div`
+  position: relative;
+  width: 10px;
+  height: 10px;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: ' ';
+    height: 19px;
+    width: 2px;
+    background-color: #fff;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+`;
+
+export const Emoji = styled.span.withConfig;
+
 export default Button;

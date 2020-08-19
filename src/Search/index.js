@@ -5,10 +5,10 @@ import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
 const Search = () => {
   // #region states
   const [state, setState] = useState('');
-  const [clicked, setClicked] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [results, setResults] = useState(null);
-  const [message, setMessage] = useState('loading results for search');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [results, setResults] = useState([]);
+  const [errorType, setErrorType] = useState('');
   // #endregion
 
   // #region funcs
@@ -18,23 +18,25 @@ const Search = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    setClicked(true);
+    setLoading(true);
+    setError(false);
+    setResults([]);
+
     if (state.trim() === '') {
       setState('');
-      setMessage('Please Type Something');
+      setLoading(false);
+      setError(true);
+      setErrorType('Empty Field');
     } else {
-      setLoading(true);
       fetch(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
         .then((res) => {
           if (!res.ok) {
-            throw new Error(
-              `${res.status} : ${
-                res.status === 404
-                  ? 'cant find any country with the given query '
-                  : 'something went wrong'
-              }`
-            );
+            setLoading(false);
+            setError(true);
+            setErrorType(`${res.status}`);
+            throw new Error(`${res.status}`);
           }
+
           return res.json();
         })
         .then((data) => {
@@ -42,7 +44,9 @@ const Search = () => {
           setResults(data);
           setLoading(false);
         })
-        .catch((err) => setMessage(`${err}`));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
   // #endregion
@@ -53,7 +57,7 @@ const Search = () => {
         <H1>Search</H1>
         <StyledLink to="/countries">All Countries</StyledLink>
       </HeaderSection>
-      <div>
+      <form>
         <Input
           id="query"
           type="text"
@@ -65,13 +69,16 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </div>
+      </form>
 
       <br />
 
-      {clicked && (
-        <Results results={results} loading={loading} message={message} />
-      )}
+      <Results
+        results={results}
+        loading={loading}
+        error={error}
+        errorType={errorType}
+      />
     </div>
   );
 };

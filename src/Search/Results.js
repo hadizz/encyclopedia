@@ -1,21 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Country from './Country';
+import ErrorBox from './ErrorBox';
 
-const Results = ({ loading, message, results }) => {
+const Results = ({ results, loading, error, errorType }) => {
+  if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
+
+  if (error) return <ErrorBox errorType={errorType} />;
+
   return (
     <div>
-      {loading ? (
-        <p>{message}</p>
+      {results.length === 0 ? (
+        <p>
+          You Can Easily Find Countries By Their Name
+          <span role="img" aria-label="sparkles">
+            ✨
+          </span>
+        </p>
       ) : (
         results.map((c) => <Country name={c.name} flag={c.flag} />)
       )}
     </div>
   );
 };
+
 Results.propTypes = {
   loading: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
+  error: PropTypes.bool.isRequired,
+  errorType: PropTypes.string.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
