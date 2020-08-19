@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Country from './Country';
 import ErrorBox from './ErrorBox';
 
-const Results = ({ results, loading, error, errorType }) => {
+const Results = ({ results, loading, error, errorData }) => {
   if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
 
-  if (error) return <ErrorBox errorType={errorType} />;
+  if (error) return <ErrorBox errorData={errorData} />;
 
   return (
     <div>
@@ -27,7 +27,7 @@ const Results = ({ results, loading, error, errorType }) => {
 Results.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
-  errorType: PropTypes.string.isRequired,
+  errorData: PropTypes.string.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

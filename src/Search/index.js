@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Results from './Results';
 import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
 
@@ -8,7 +9,7 @@ const Search = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [results, setResults] = useState([]);
-  const [errorType, setErrorType] = useState('');
+  const [errorData, setErrorData] = useState('');
   // #endregion
 
   // #region funcs
@@ -26,26 +27,32 @@ const Search = () => {
       setState('');
       setLoading(false);
       setError(true);
-      setErrorType('Empty Field');
+      setErrorData({ status: 'Empty Field', message: '' });
     } else {
-      fetch(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
+      axios
+        .get(`https://restcountries.eu/rest/v2/name/${state}?fields=name;flag`)
         .then((res) => {
-          if (!res.ok) {
-            setLoading(false);
-            setError(true);
-            setErrorType(`${res.status}`);
-            throw new Error(`${res.status}`);
+          console.log('[axios/ then res] response is : ', res);
+
+          if (res.status !== 200) {
+            throw new Error(res.statusText);
           }
 
-          return res.json();
+          return res.data;
         })
         .then((data) => {
-          console.log('[search] : inside fetch : ', data);
+          console.log('[axios/ then data] : inside fetch : ', data);
           setResults(data);
           setLoading(false);
         })
         .catch((err) => {
-          console.log(err);
+          console.log('[axios/ then err] : ', err.response);
+          setLoading(false);
+          setError(true);
+          setErrorData({
+            ...err.response.data,
+            status: err.response.data.status.toString(),
+          });
         });
     }
   };
@@ -77,7 +84,7 @@ const Search = () => {
         results={results}
         loading={loading}
         error={error}
-        errorType={errorType}
+        errorData={errorData}
       />
     </div>
   );
