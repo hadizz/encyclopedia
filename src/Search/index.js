@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 import Results from './Results';
 import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
 
 const Search = () => {
   // #region states
+  const location = useLocation();
   const [state, setState] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -21,9 +23,9 @@ const Search = () => {
     event.preventDefault();
     setLoading(true);
     setError(false);
-    setResults([]);
 
     if (state.trim() === '') {
+      setResults([]);
       setState('');
       setLoading(false);
       setError(true);
@@ -45,6 +47,7 @@ const Search = () => {
           setLoading(false);
         })
         .catch((err) => {
+          setResults([]);
           setLoading(false);
           setError(true);
           setErrorData({
@@ -55,6 +58,57 @@ const Search = () => {
     }
   };
   // #endregion
+
+  React.useEffect(() => {
+    console.log('hello, state : ', location.state);
+    console.log(
+      'location.state === undefined : ',
+      location.state === undefined
+    );
+  }, []);
+
+  React.useEffect(() => {
+    console.log('--------------------');
+    console.log('results called');
+    console.log('results :', results);
+    if (location.state !== undefined) {
+      console.log('results changed ? ', results === location.state.seenResults);
+      console.log('location.state.seenResults :', location.state.seenResults);
+    }
+  }, [results]);
+
+  const ShowResults = () => {
+    if (results.length !== 0) {
+      return (
+        <Results
+          results={results}
+          loading={loading}
+          error={error}
+          errorData={errorData}
+          seen={false}
+        />
+      );
+    }
+    if (location.state !== undefined) {
+      return (
+        <Results
+          results={location.state.seenResults}
+          loading={loading}
+          error={error}
+          errorData={errorData}
+          seen
+        />
+      );
+    }
+    return (
+      <p>
+        You Can Easily Find Countries By Their Name
+        <span role="img" aria-label="sparkles">
+          ✨
+        </span>
+      </p>
+    );
+  };
 
   return (
     <div>
@@ -76,14 +130,7 @@ const Search = () => {
         </Button>
       </div>
 
-      <br />
-
-      <Results
-        results={results}
-        loading={loading}
-        error={error}
-        errorData={errorData}
-      />
+      <ShowResults />
     </div>
   );
 };

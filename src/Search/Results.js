@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import Country from './Country';
 import ErrorBox from './ErrorBox';
-import CountryPage from '../CountryPage';
 
-const Results = ({ results, loading, error, errorData }) => {
+const Results = ({ results, loading, error, errorData, seen }) => {
   const history = useHistory();
 
   if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
@@ -14,25 +13,23 @@ const Results = ({ results, loading, error, errorData }) => {
 
   return (
     <div>
-      {results.length === 0 ? (
-        <p>
-          You Can Easily Find Countries By Their Name
-          <span role="img" aria-label="sparkles">
-            ✨
-          </span>
-        </p>
-      ) : (
-        results.map((c) => (
+      <br />
+      {seen && <h4>showing previous results</h4>}
+      <div>
+        {results.map((c) => (
           <Link
             to={`/country/${c.alpha2Code}`}
             onClick={() => {
-              history.push({ pathName: '/', state: { seenResults: results } });
+              history.push({
+                pathName: '/',
+                state: { seenResults: results },
+              });
             }}
           >
             <Country name={c.name} flag={c.flag} />
           </Link>
-        ))
-      )}
+        ))}
+      </div>
     </div>
   );
 };
@@ -41,6 +38,7 @@ Results.propTypes = {
   loading: PropTypes.bool.isRequired,
   error: PropTypes.bool.isRequired,
   errorData: PropTypes.string.isRequired,
+  seen: PropTypes.bool.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,
