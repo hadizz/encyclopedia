@@ -11,13 +11,15 @@ const App = () => {
     <Wrapper>
       <Router>
         <Switch>
-          <Route path="/countries">
-            <Countries />
-          </Route>
           <Route path="/country/:code">
             <CountryPage />
           </Route>
-          <Route exact path="/">
+
+          <Route path="/country">
+            <Countries />
+          </Route>
+
+          <Route path="/">
             <Search />
           </Route>
         </Switch>

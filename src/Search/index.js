@@ -64,7 +64,7 @@ const Search = () => {
     <div>
       <HeaderSection>
         <H1>Search</H1>
-        <StyledLink to="/countries">All Countries</StyledLink>
+        <StyledLink to="/country">All Countries</StyledLink>
       </HeaderSection>
       <div>
         <Input

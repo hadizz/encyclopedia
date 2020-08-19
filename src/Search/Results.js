@@ -11,7 +11,7 @@ const Results = ({ results, loading, error, errorData }) => {
   if (error) return <ErrorBox errorData={errorData} />;
 
   return (
-    <Router>
+    <div>
       {results.length === 0 ? (
         <p>
           You Can Easily Find Countries By Their Name
@@ -26,12 +26,7 @@ const Results = ({ results, loading, error, errorData }) => {
           </Link>
         ))
       )}
-
-      <Switch>
-        {/* eslint-disable-next-line */}
-        <Route path="/country/:code" children={<CountryPage />} />
-      </Switch>
-    </Router>
+    </div>
   );
 };
 
