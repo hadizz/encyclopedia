@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Arrow,
   CPHeader,
@@ -9,9 +10,10 @@ import {
 } from '../Components';
 
 const Header = () => {
+  const history = useHistory();
   return (
     <CPHeader>
-      <BackSearchBtn>
+      <BackSearchBtn onClick={() => history.goBack()}>
         <Arrow left />
         <BackSearchT>Search</BackSearchT>
       </BackSearchBtn>

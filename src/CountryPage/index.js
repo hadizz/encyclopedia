@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import { CountryPageWrapper, Flag } from '../Components';
@@ -7,7 +7,6 @@ import Section from './Section';
 import Header from './Header';
 
 const CountryPage = () => {
-  const history = useHistory();
   const { code } = useParams();
   const [details, setDetails] = useState(null);
   const [infoSectionData, setInfoSectionData] = useState(null);
@@ -62,10 +61,6 @@ const CountryPage = () => {
 
   return (
     <CountryPageWrapper>
-      {/* <button onClick={() => history.goBack()} type="button">
-        go back
-      </button>
-      <br /> */}
       {!loading && (
         <>
           <Header />
