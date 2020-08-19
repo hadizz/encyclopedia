@@ -2,14 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import Country from './Country';
-import ErrorBox from './ErrorBox';
 
-const Results = ({ results, loading, error, errorData, seen }) => {
+const Results = ({ results, seen }) => {
   const history = useHistory();
-
-  if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
-
-  if (error) return <ErrorBox errorData={errorData} />;
 
   return (
     <div>
@@ -35,9 +30,6 @@ const Results = ({ results, loading, error, errorData, seen }) => {
 };
 
 Results.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.bool.isRequired,
-  errorData: PropTypes.string.isRequired,
   seen: PropTypes.bool.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({

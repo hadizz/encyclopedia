@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import Results from './Results';
 import Button, { Input, H1, HeaderSection, StyledLink } from './Components';
+import ShowResults from './ShowResults';
 
 const Search = () => {
   // #region states
@@ -77,39 +77,6 @@ const Search = () => {
     }
   }, [results]);
 
-  const ShowResults = () => {
-    if (results.length !== 0) {
-      return (
-        <Results
-          results={results}
-          loading={loading}
-          error={error}
-          errorData={errorData}
-          seen={false}
-        />
-      );
-    }
-    if (location.state !== undefined) {
-      return (
-        <Results
-          results={location.state.seenResults}
-          loading={loading}
-          error={error}
-          errorData={errorData}
-          seen
-        />
-      );
-    }
-    return (
-      <p>
-        You Can Easily Find Countries By Their Name
-        <span role="img" aria-label="sparkles">
-          ✨
-        </span>
-      </p>
-    );
-  };
-
   return (
     <div>
       <HeaderSection>
@@ -130,7 +97,13 @@ const Search = () => {
         </Button>
       </div>
 
-      <ShowResults />
+      <ShowResults
+        results={results}
+        loading={loading}
+        error={error}
+        errorData={errorData}
+        loc={location}
+      />
     </div>
   );
 };
