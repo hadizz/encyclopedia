@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
-import Country from './Country';
+import CountryItem from '../Components/CountryItem';
 
 const Results = ({ results, seen }) => {
   const history = useHistory();
@@ -21,7 +21,7 @@ const Results = ({ results, seen }) => {
               });
             }}
           >
-            <Country name={c.name} flag={c.flag} />
+            <CountryItem name={c.name} flag={c.flag} />
           </Link>
         ))}
       </div>
