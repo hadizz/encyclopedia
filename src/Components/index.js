@@ -42,6 +42,12 @@ export const StyledLink = styled(Link)`
   margin-bottom: 0.3rem;
 `;
 
+// no decorate link
+export const NDLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+
 export const CountryWrapper = styled.div`
   padding: 7px 7px;
   display: flex;
@@ -78,6 +84,9 @@ export const Arrow = styled.div`
     `;
     }
     return `
+    height: 13px;
+    width: 13px;
+    border-color: #007afd;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
     `;
@@ -132,6 +141,94 @@ export const CloseIcon = styled.div`
   }
 `;
 
-export const Emoji = styled.span.withConfig;
+export const CountryPageWrapper = styled.div`
+  background-color: #e5e5e5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+`;
+
+export const SectionWrapper = styled.div`
+  margin-bottom: 2rem;
+`;
+
+export const DataTableHeader = styled.h2`
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  margin-left: 10px;
+`;
+
+export const Flag = styled.img`
+  margin-top: 1rem;
+  height: 180px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const DataTable = styled.div`
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const DataBox = styled.div`
+  padding: 10px 8px 10px 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+export const DataName = styled.span`
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 700;
+`;
+
+export const DataValue = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(0, 0, 0, 0.5);
+`;
+
+export const CPHeader = styled.div`
+  display: flex;
+  background-color: white;
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+`;
+
+export const CPHeaderTitle = styled.div`
+  font-weight: 500;
+  font-size: 18px;
+`;
+
+export const BackSearchBtn = styled(Link)`
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #007afd;
+  text-decoration: none;
+`;
+export const BackSearchT = styled.span`
+  font-weight: 700;
+  font-size: 16px;
+  margin-left: 1px;
+`;
+
+export const EmptyT = styled.div`
+  margin-left: auto;
+  visibility: hidden;
+`;
 
 export default Button;

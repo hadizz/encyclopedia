@@ -60,24 +60,6 @@ const Search = () => {
   };
   // #endregion
 
-  React.useEffect(() => {
-    console.log('hello, state : ', location.state);
-    console.log(
-      'location.state === undefined : ',
-      location.state === undefined
-    );
-  }, []);
-
-  React.useEffect(() => {
-    console.log('--------------------');
-    console.log('results called');
-    console.log('results :', results);
-    if (location.state !== undefined) {
-      console.log('results changed ? ', results === location.state.seenResults);
-      console.log('location.state.seenResults :', location.state.seenResults);
-    }
-  }, [results]);
-
   return (
     <div>
       <HeaderSection>
