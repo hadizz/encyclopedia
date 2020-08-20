@@ -231,4 +231,47 @@ export const EmptyT = styled.div`
   visibility: hidden;
 `;
 
+export const CurrencyDataBox = styled.div`
+  padding: 10px 8px 10px 8px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ExchangeBox = styled.div`
+  padding: 10px 8px 10px 8px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const ExchangeInnerBox = styled.div`
+  height: 100%;
+  width: 150px;
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+`;
+
+export const Select = styled.select`
+  font-size: 14px;
+  width: 90%;
+  border: 1px #fff solid;
+  background-color: white;
+  padding: 0.6em 1.4em 0.5em 0.8em;
+  box-sizing: border-box;
+  margin: 0;
+
+  &:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+`;
+
+export const Option = styled.option``;
+
 export default Button;

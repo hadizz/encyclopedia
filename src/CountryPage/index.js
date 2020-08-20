@@ -5,11 +5,13 @@ import axios from 'axios';
 import { CountryPageWrapper, Flag } from '../Components';
 import Section from './Section';
 import Header from './Header';
+import CurrencySection from './CurrencySection';
 
 const CountryPage = () => {
   const { code } = useParams();
   const [details, setDetails] = useState(null);
   const [infoSectionData, setInfoSectionData] = useState(null);
+  const [currencyData, setCurrencyData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // get country details
@@ -34,6 +36,7 @@ const CountryPage = () => {
     }))(d);
 
     setInfoSectionData(d1);
+    setCurrencyData(d.currencies[0]);
   }
 
   React.useEffect(() => {
@@ -66,6 +69,7 @@ const CountryPage = () => {
           <Header />
           <Flag src={details.flag} alt={`flag of ${details.name}`} />
           <Section header="information" data={infoSectionData} />
+          <CurrencySection header="currency" data={currencyData} />
         </>
       )}
     </CountryPageWrapper>
