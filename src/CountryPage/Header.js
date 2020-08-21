@@ -1,13 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  Arrow,
   CPHeader,
   CPHeaderTitle,
   BackSearchBtn,
   BackSearchT,
   EmptyT,
-} from '../Components';
+} from './Components';
+
+import { Arrow } from '../Components';
 
 const Header = () => {
   const history = useHistory();

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { CountryPageWrapper, Flag } from '../Components';
+import { CountryPageWrapper, Flag, CountryPageInner } from './Components';
 import Section from './Section';
 import Header from './Header';
 import CurrencySection from './CurrencySection';
@@ -41,7 +41,6 @@ const CountryPage = () => {
 
     setInfoSectionData(d1);
     setCurrencyData(d.currencies[0]);
-    console.log('d.capital', d.capital);
     setWeatherData(d.capital);
   }
 
@@ -54,12 +53,11 @@ const CountryPage = () => {
         );
 
         const json = await response.data;
-        console.log('fetch data  ', json);
 
         setDetails(json);
         init(json);
       } catch (error) {
-        console.log('error in fetch data coiuntry page');
+        console.log('error in fetch data country page');
       } finally {
         setLoading(false);
       }
@@ -70,17 +68,19 @@ const CountryPage = () => {
 
   return (
     <CountryPageWrapper>
-      {loading ? (
-        <LoadingCountryItem />
-      ) : (
-        <>
-          <Header />
-          <Flag src={details.flag} alt={`flag of ${details.name}`} />
-          <Section header="information" data={infoSectionData} />
-          <CurrencySection header="currency" data={currencyData} />
-          <WeatherSection header="weather" data={weatherData} />
-        </>
-      )}
+      <CountryPageInner>
+        <Header />
+        {loading ? (
+          <LoadingCountryItem />
+        ) : (
+          <>
+            <Flag src={details.flag} alt={`flag of ${details.name}`} />
+            <Section header="information" data={infoSectionData} />
+            <CurrencySection header="currency" data={currencyData} />
+            <WeatherSection header="weather" data={weatherData} />
+          </>
+        )}
+      </CountryPageInner>
     </CountryPageWrapper>
   );
 };

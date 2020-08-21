@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useHistory } from 'react-router-dom';
-import Button, { Input, H1, HeaderSection } from '../Components';
+import { H1, HeaderSection } from '../Components';
+import Button, { Input, Form } from './Components';
 import ShowResults from './ShowResults';
 
 const Search = () => {
@@ -65,7 +66,12 @@ const Search = () => {
       <HeaderSection>
         <H1>Search</H1>
       </HeaderSection>
-      <div>
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleClick(event);
+        }}
+      >
         <Input
           id="query"
           type="text"
@@ -77,7 +83,7 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </div>
+      </Form>
 
       <ShowResults
         results={results}

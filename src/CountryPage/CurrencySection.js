@@ -15,15 +15,12 @@ import {
   ExchangeInnerBox,
   Select,
   Option,
-} from '../Components';
+} from './Components';
 
 function CurrencySection({ header, data }) {
   const [rates, setRates] = useState(null);
   const [loading, setLoading] = useState(true);
   const [currency, setCurrency] = useState(null);
-
-  console.log('in CurrencySection data : ', data);
-  console.log('in CurrencySection rates : ', rates);
 
   React.useEffect(() => {
     async function fetchCountryDetails() {
@@ -34,12 +31,11 @@ function CurrencySection({ header, data }) {
         );
 
         const json = await response.data;
-        console.log('fetch data  ', json);
 
         setRates(json.rates);
         setCurrency(data.code);
       } catch (error) {
-        console.log('error in fetch data coiuntry page');
+        console.log('error in fetch data country page');
       } finally {
         setLoading(false);
       }
@@ -70,7 +66,7 @@ function CurrencySection({ header, data }) {
         <ExchangeInnerBox>
           <Select onChange={handleOnchange}>
             {rates &&
-              Object.keys(rates).map((key, index) => {
+              Object.keys(rates).map((key) => {
                 return (
                   <Option value={key} selected={key === currency}>
                     {key}

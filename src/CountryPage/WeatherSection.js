@@ -10,7 +10,7 @@ import {
   DataBox,
   DataName,
   DataValue,
-} from '../Components';
+} from './Components';
 
 import LaodingItem from '../Components/LaodingItem';
 
@@ -19,9 +19,8 @@ function WeatherSection({ header, data }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  console.log('in WeatherSection data : ', data);
-
   function filterProps(d) {
+    // eslint-disable-next-line
     const d1 = (({ weather_state_abbr, applicable_date }) => ({
       applicable_date,
       weather_state_abbr,
@@ -39,7 +38,7 @@ function WeatherSection({ header, data }) {
         );
 
         const json = await response.data;
-        console.log('fetchCityWeather data  ', json);
+
         filterProps(json.consolidated_weather);
         setStates(json.consolidated_weather);
       } catch (err) {
@@ -60,7 +59,6 @@ function WeatherSection({ header, data }) {
         );
 
         const json = await response.data;
-        console.log('fetchCityWoeid data  ', json);
 
         fetchCityWeather(json[0].woeid);
       } catch (err) {
@@ -94,7 +92,7 @@ function WeatherSection({ header, data }) {
     }
     return states.map((state) => {
       const fState = filterProps(state);
-      console.log('fState', fState);
+
       return (
         <DataBox>
           <DataName>{moment(fState.applicable_date).format('dddd')}</DataName>
