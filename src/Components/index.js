@@ -145,6 +145,10 @@ export const CountryPageWrapper = styled.div`
   width: 100%;
   margin-bottom: 3rem;
   background-color: #e5e5e5;
+
+  ${media.greaterThan('large')`
+    background-color: white;
+  `}
 `;
 
 export const CountryPageInner = styled.div`
@@ -172,6 +176,8 @@ export const Flag = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid grey;
+  border-radius: 10px;
 `;
 
 export const DataTable = styled.div`
@@ -182,6 +188,8 @@ export const DataTable = styled.div`
 
   ${media.greaterThan('large')`
     border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    box-shadow: rgb(0,0,0,0.1) 0px 2px 4px 0px
   `}
 `;
 
@@ -214,6 +222,9 @@ export const CPHeader = styled.div`
   background-color: white;
   padding: 12px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  ${media.greaterThan('large')`
+  `}
 `;
 
 export const CPHeaderTitle = styled.div`
