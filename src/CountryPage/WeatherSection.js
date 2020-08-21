@@ -20,6 +20,7 @@ function WeatherSection({ header, data }) {
   const [error, setError] = useState(false);
 
   function filterProps(d) {
+    // eslint-disable-next-line
     const d1 = (({ weather_state_abbr, applicable_date }) => ({
       applicable_date,
       weather_state_abbr,
