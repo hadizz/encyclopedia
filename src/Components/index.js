@@ -218,6 +218,7 @@ export const BackSearchBtn = styled.button`
   text-decoration: none;
   background: white;
   border: none;
+  cursor: pointer;
 `;
 export const BackSearchT = styled.span`
   font-weight: 700;
