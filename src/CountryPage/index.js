@@ -70,17 +70,19 @@ const CountryPage = () => {
 
   return (
     <CountryPageWrapper>
-      {loading ? (
-        <LoadingCountryItem />
-      ) : (
-        <CountryPageInner>
-          <Header />
-          <Flag src={details.flag} alt={`flag of ${details.name}`} />
-          <Section header="information" data={infoSectionData} />
-          <CurrencySection header="currency" data={currencyData} />
-          <WeatherSection header="weather" data={weatherData} />
-        </CountryPageInner>
-      )}
+      <CountryPageInner>
+        <Header />
+        {loading ? (
+          <LoadingCountryItem />
+        ) : (
+          <>
+            <Flag src={details.flag} alt={`flag of ${details.name}`} />
+            <Section header="information" data={infoSectionData} />
+            <CurrencySection header="currency" data={currencyData} />
+            <WeatherSection header="weather" data={weatherData} />
+          </>
+        )}
+      </CountryPageInner>
     </CountryPageWrapper>
   );
 };
