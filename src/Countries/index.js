@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
 import CountryItem from '../Components/CountryItem';
 import { NDLink } from '../Components';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const history = useHistory();
 
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all?fields=name;flag;alpha2Code')
@@ -22,9 +20,6 @@ function Countries() {
 
   return (
     <div>
-      <button onClick={() => history.goBack()} type="button">
-        go back to search page
-      </button>
       {loading ? (
         <Loading />
       ) : (

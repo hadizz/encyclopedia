@@ -11,10 +11,6 @@ const Button = styled.button`
 `;
 
 export const HeaderSection = styled.section`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
   margin-bottom: 0.75rem;
 `;
 

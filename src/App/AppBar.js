@@ -4,10 +4,10 @@ import { AppBarWrapper, AppBarBtn } from './Components';
 function AppBar() {
   return (
     <AppBarWrapper>
-      <AppBarBtn>
+      <AppBarBtn to="/">
         <i className="fa fa-compass" aria-hidden="true" />
       </AppBarBtn>
-      <AppBarBtn>
+      <AppBarBtn to="/country">
         <i className="fa fa-globe" aria-hidden="true" />
       </AppBarBtn>
     </AppBarWrapper>
