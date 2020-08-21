@@ -25,6 +25,10 @@ export const AppBarWrapper = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
+  ${media.greaterThan('large')`
+    display: none;
+  `}
 `;
 
 export const AppBarBtn = styled(Link)`
