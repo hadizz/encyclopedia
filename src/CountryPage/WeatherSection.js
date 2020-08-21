@@ -69,10 +69,15 @@ function WeatherSection({ header, data }) {
       }
     }
 
-    fetchCityWoeid();
+    if (data !== '') {
+      fetchCityWoeid();
+    }
   }, [data]);
 
   const ShowWeatherStates = () => {
+    if (data === '') {
+      return "We can't show you because this country has no capital!";
+    }
     if (loading) {
       return 'loading';
     }
