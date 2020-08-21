@@ -63,5 +63,11 @@ export const AppName = styled.li`
   font-size: 23px;
   font-weight: 700;
   margin-right: 15px;
+  color: black;
+  transition: 0.3s;
+
+  &:hover {
+    color: #0080ff;
+  }
 `;
 export default Wrapper;
