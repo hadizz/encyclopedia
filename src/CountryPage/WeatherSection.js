@@ -12,6 +12,8 @@ import {
   DataValue,
 } from '../Components';
 
+import LaodingItem from '../Components/LaodingItem';
+
 function WeatherSection({ header, data }) {
   const [states, setStates] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -69,18 +71,23 @@ function WeatherSection({ header, data }) {
       }
     }
 
-    fetchCityWoeid();
+    if (data !== '') {
+      fetchCityWoeid();
+    }
   }, [data]);
 
   const ShowWeatherStates = () => {
+    if (data === '') {
+      return "We can't show you because this country has no capital!";
+    }
     if (loading) {
-      return 'loading';
+      return <LaodingItem />;
     }
     if (error) {
       return 'There was an error in fetching data from server';
     }
     if (states === null) {
-      return 'loading weather states';
+      return <LaodingItem />;
     }
     if (states.length === 0) {
       return 'No data found for this city';

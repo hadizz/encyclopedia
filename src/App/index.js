@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Search from '../Search';
 import Countries from '../Countries';
 import CountryPage from '../CountryPage';
+import AppBar from './AppBar';
 
 import Wrapper from './Components';
 
@@ -23,6 +24,7 @@ const App = () => {
             <Search />
           </Route>
         </Switch>
+        <AppBar />
       </Router>
     </Wrapper>
   );

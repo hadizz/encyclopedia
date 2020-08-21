@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ErrorBox from './ErrorBox';
 import Results from './Results';
+import LoadingCountryItem from '../Components/LoadingCountryItem';
 
 const ShowResults = ({ loading, error, results, loc, errorData }) => {
-  if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
+  if (loading) return <LoadingCountryItem />;
 
   if (error) return <ErrorBox errorData={errorData} />;
 

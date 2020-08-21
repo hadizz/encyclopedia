@@ -13,7 +13,7 @@ const Header = () => {
   const history = useHistory();
   return (
     <CPHeader>
-      <BackSearchBtn onClick={() => history.goBack()}>
+      <BackSearchBtn onClick={() => history.goBack()} type="button">
         <Arrow left />
         <BackSearchT>Search</BackSearchT>
       </BackSearchBtn>

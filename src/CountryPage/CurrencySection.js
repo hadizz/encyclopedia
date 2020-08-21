@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import LaodingItem from '../Components/LaodingItem';
 
 import {
   SectionWrapper,
@@ -54,7 +55,7 @@ function CurrencySection({ header, data }) {
 
   const ShowCurrency = () => {
     if (loading) {
-      return <p>loading</p>;
+      return <LaodingItem />;
     }
     if (rates === null) {
       return <div>This currency is not supported with our api.</div>;
