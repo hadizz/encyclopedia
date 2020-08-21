@@ -8,6 +8,8 @@ import Header from './Header';
 import CurrencySection from './CurrencySection';
 import WeatherSection from './WeatherSection';
 
+import LoadingCountryItem from '../Components/LoadingCountryItem';
+
 const CountryPage = () => {
   const { code } = useParams();
   const [details, setDetails] = useState(null);
@@ -68,7 +70,9 @@ const CountryPage = () => {
 
   return (
     <CountryPageWrapper>
-      {!loading && (
+      {loading ? (
+        <LoadingCountryItem />
+      ) : (
         <>
           <Header />
           <Flag src={details.flag} alt={`flag of ${details.name}`} />
