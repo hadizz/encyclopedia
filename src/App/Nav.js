@@ -1,10 +1,11 @@
 import React from 'react';
-import { NavWrapper, NavItem } from './Components';
+import { NavWrapper, NavItem, AppName } from './Components';
 
 const Nav = () => {
   return (
     <nav>
       <NavWrapper>
+        <AppName>Encyclopedia</AppName>
         <li>
           <NavItem to="/">Search</NavItem>
         </li>

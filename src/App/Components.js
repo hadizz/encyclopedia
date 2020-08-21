@@ -40,6 +40,7 @@ export const AppBarBtn = styled(Link)`
 export const NavWrapper = styled.ul`
   list-style-type: none;
   display: flex;
+  align-items: center;
   background-color: white;
   padding: 12px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -51,11 +52,16 @@ export const NavWrapper = styled.ul`
 
 export const NavItem = styled(NDLink)`
   font-size: 18px;
-  margin-right: 30px;
+  margin: 0 15px;
 
   &:hover {
     color: blue;
   }
 `;
 
+export const AppName = styled.li`
+  font-size: 23px;
+  font-weight: 700;
+  margin-right: 15px;
+`;
 export default Wrapper;
