@@ -6,12 +6,14 @@ import { CountryPageWrapper, Flag } from '../Components';
 import Section from './Section';
 import Header from './Header';
 import CurrencySection from './CurrencySection';
+import WeatherSection from './WeatherSection';
 
 const CountryPage = () => {
   const { code } = useParams();
   const [details, setDetails] = useState(null);
   const [infoSectionData, setInfoSectionData] = useState(null);
   const [currencyData, setCurrencyData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // get country details
@@ -37,6 +39,8 @@ const CountryPage = () => {
 
     setInfoSectionData(d1);
     setCurrencyData(d.currencies[0]);
+    console.log('d.capital', d.capital);
+    setWeatherData(d.capital);
   }
 
   React.useEffect(() => {
@@ -70,6 +74,7 @@ const CountryPage = () => {
           <Flag src={details.flag} alt={`flag of ${details.name}`} />
           <Section header="information" data={infoSectionData} />
           <CurrencySection header="currency" data={currencyData} />
+          <WeatherSection header="weather" data={weatherData} />
         </>
       )}
     </CountryPageWrapper>
