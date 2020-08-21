@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import media from 'styled-media-query';
 
 const Button = styled.button`
   background: #007afd;
@@ -138,12 +139,19 @@ export const CloseIcon = styled.div`
 `;
 
 export const CountryPageWrapper = styled.div`
-  background-color: #e5e5e5;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   margin-bottom: 3rem;
+  background-color: #e5e5e5;
+`;
+
+export const CountryPageInner = styled.div`
+  ${media.greaterThan('large')`
+    width: 50%;
+    margin: 0 auto;
+  `}
 `;
 
 export const SectionWrapper = styled.div`
@@ -171,6 +179,10 @@ export const DataTable = styled.div`
   padding: 10px;
   display: flex;
   flex-direction: column;
+
+  ${media.greaterThan('large')`
+    border-radius: 10px;
+  `}
 `;
 
 export const DataBox = styled.div`

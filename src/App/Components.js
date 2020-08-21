@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import media from 'styled-media-query';
 
 const Wrapper = styled.section`
   width: 80%;
   margin: 2rem auto 4rem auto;
+
+  ${media.greaterThan('large')`
+    width: 50%;
+  `}
 `;
 
 export const AppBarWrapper = styled.div`

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { CountryPageWrapper, Flag } from '../Components';
+import { CountryPageWrapper, Flag, CountryPageInner } from '../Components';
 import Section from './Section';
 import Header from './Header';
 import CurrencySection from './CurrencySection';
@@ -73,13 +73,13 @@ const CountryPage = () => {
       {loading ? (
         <LoadingCountryItem />
       ) : (
-        <>
+        <CountryPageInner>
           <Header />
           <Flag src={details.flag} alt={`flag of ${details.name}`} />
           <Section header="information" data={infoSectionData} />
           <CurrencySection header="currency" data={currencyData} />
           <WeatherSection header="weather" data={weatherData} />
-        </>
+        </CountryPageInner>
       )}
     </CountryPageWrapper>
   );
