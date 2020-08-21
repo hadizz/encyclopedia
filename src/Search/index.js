@@ -66,7 +66,12 @@ const Search = () => {
       <HeaderSection>
         <H1>Search</H1>
       </HeaderSection>
-      <div>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          handleClick(event);
+        }}
+      >
         <Input
           id="query"
           type="text"
@@ -78,7 +83,7 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </div>
+      </form>
 
       <ShowResults
         results={results}
