@@ -1,10 +1,18 @@
 import React from 'react';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 import ErrorBox from './ErrorBox';
 import Results from './Results';
 
 const ShowResults = ({ loading, error, results, loc, errorData }) => {
-  if (loading) return <p>++++++++++++++++++loading+++++++++++</p>;
+  if (loading)
+    return (
+      <SkeletonTheme color="#e8e8e8" highlightColor="#d4d4d4">
+        <p>
+          <Skeleton count={3} style={{ marginTop: 40 }} />
+        </p>
+      </SkeletonTheme>
+    );
 
   if (error) return <ErrorBox errorData={errorData} />;
 
