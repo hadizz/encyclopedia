@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import media from 'styled-media-query';
+import { NDLink } from '../Components';
 
 const Wrapper = styled.section`
   width: 80%;
@@ -30,6 +31,27 @@ export const AppBarBtn = styled(Link)`
   text-decoration: none;
   color: white;
   font-size: 30px;
+`;
+
+export const NavWrapper = styled.ul`
+  list-style-type: none;
+  display: flex;
+  background-color: white;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  ${media.lessThan('large')`
+    display: none;
+  `}
+`;
+
+export const NavItem = styled(NDLink)`
+  font-size: 18px;
+  margin-right: 30px;
+
+  &:hover {
+    color: blue;
+  }
 `;
 
 export default Wrapper;
