@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CountryItem from '../Components/CountryItem';
 import { NDLink, HeaderSection, H1 } from '../Components';
+import LoadingCountryItem from '../Components/LoadingCountryItem';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -16,15 +17,13 @@ function Countries() {
       .catch((err) => alert('error in fetching : ', err));
   }, []);
 
-  const Loading = () => <p>loading</p>;
-
   return (
     <div>
       <HeaderSection>
         <H1>Countries</H1>
       </HeaderSection>
       {loading ? (
-        <Loading />
+        <LoadingCountryItem />
       ) : (
         countries.map((c) => (
           <NDLink
