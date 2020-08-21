@@ -10,7 +10,7 @@ import {
   DataBox,
   DataName,
   DataValue,
-} from '../Components';
+} from './Components';
 
 import LaodingItem from '../Components/LaodingItem';
 

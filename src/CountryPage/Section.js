@@ -8,7 +8,7 @@ import {
   DataBox,
   DataName,
   DataValue,
-} from '../Components';
+} from './Components';
 
 function Section({ header, data }) {
   console.log('in section data : ', data);

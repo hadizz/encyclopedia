@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-import { CountryPageWrapper, Flag, CountryPageInner } from '../Components';
+import { CountryPageWrapper, Flag, CountryPageInner } from './Components';
 import Section from './Section';
 import Header from './Header';
 import CurrencySection from './CurrencySection';

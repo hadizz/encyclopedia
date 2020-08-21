@@ -15,7 +15,7 @@ import {
   ExchangeInnerBox,
   Select,
   Option,
-} from '../Components';
+} from './Components';
 
 function CurrencySection({ header, data }) {
   const [rates, setRates] = useState(null);

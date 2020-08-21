@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ErrorWrapper, ErrorH3, ErrorP } from '../Components';
+import { ErrorWrapper, ErrorH3, ErrorP } from './Components';
 
 const msg = (data) => {
   switch (data.status) {
