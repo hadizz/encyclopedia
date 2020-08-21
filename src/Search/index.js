@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation, useHistory } from 'react-router-dom';
 import { H1, HeaderSection } from '../Components';
-import Button, { Input } from './Components';
+import Button, { Input, Form } from './Components';
 import ShowResults from './ShowResults';
 
 const Search = () => {
@@ -66,7 +66,7 @@ const Search = () => {
       <HeaderSection>
         <H1>Search</H1>
       </HeaderSection>
-      <form
+      <Form
         onSubmit={(event) => {
           event.preventDefault();
           handleClick(event);
@@ -83,7 +83,7 @@ const Search = () => {
         <Button onClick={handleClick} type="button">
           <i className="fa fa-search" style={{ color: 'white' }} />
         </Button>
-      </form>
+      </Form>
 
       <ShowResults
         results={results}

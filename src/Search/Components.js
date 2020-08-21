@@ -1,24 +1,35 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import media from 'styled-media-query';
+
+export const Form = styled.form`
+  height: 35px;
+`;
 
 export const Input = styled.input`
-  height: 35px;
   width: 85%;
+  height: 100%;
   padding-left: 15px;
   color: rgba(0, 0, 0, 0.54);
   background: #ebebeb;
   border: none;
   border-radius: 8px 0 0 8px;
   font-size: 16px;
+
+  ${media.greaterThan('medium')`
+    width: 90%;
+  `}
 `;
 
 const Button = styled.button`
   background: #007afd;
-  padding: 0.25em 1em;
+  height: 100%;
   border: none;
   border-radius: 0 8px 8px 0;
-  height: 35px;
   width: 15%;
+
+  ${media.greaterThan('medium')`
+  width: 10%;
+`}
 `;
 
 export const ErrorWrapper = styled.div`
