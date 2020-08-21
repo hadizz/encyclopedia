@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CountryItem from '../Components/CountryItem';
-import { NDLink } from '../Components';
+import { NDLink, HeaderSection, H1 } from '../Components';
 
 function Countries() {
   const [countries, setCountries] = useState([]);
@@ -20,6 +20,9 @@ function Countries() {
 
   return (
     <div>
+      <HeaderSection>
+        <H1>Countries</H1>
+      </HeaderSection>
       {loading ? (
         <Loading />
       ) : (

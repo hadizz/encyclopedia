@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Wrapper = styled.section`
   width: 80%;
-  margin: 2rem auto;
+  margin: 2rem auto 4rem auto;
 `;
 
 export const AppBarWrapper = styled.div`
