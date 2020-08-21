@@ -58,33 +58,6 @@ export const NDLink = styled(Link)`
   color: black;
 `;
 
-// export const ErrorHeader = styled.div`
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// `;
-
-// export const CloseIcon = styled.div`
-//   position: relative;
-//   width: 10px;
-//   height: 10px;
-
-//   &:before,
-//   &:after {
-//     position: absolute;
-//     content: ' ';
-//     height: 19px;
-//     width: 2px;
-//     background-color: #fff;
-//   }
-//   &:before {
-//     transform: rotate(45deg);
-//   }
-//   &:after {
-//     transform: rotate(-45deg);
-//   }
-// `;
-
 export const CountryWrapper = styled.div`
   padding: 7px 7px;
   display: flex;

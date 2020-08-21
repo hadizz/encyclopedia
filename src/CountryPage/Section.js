@@ -11,7 +11,6 @@ import {
 } from './Components';
 
 function Section({ header, data }) {
-  console.log('in section data : ', data);
   return (
     <SectionWrapper>
       <DataTableHeader>{header}</DataTableHeader>

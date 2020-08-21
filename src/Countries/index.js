@@ -37,11 +37,7 @@ function Countries() {
         <LoadingCountryItem />
       ) : (
         countries.map((c) => (
-          <NDLink
-            to={`/country/${c.alpha2Code}`}
-            key={c.id}
-            // onClick={() => history.push({ pathName: '/country' })}
-          >
+          <NDLink to={`/country/${c.alpha2Code}`} key={c.id}>
             <CountryItem name={c.name} flag={c.flag} />
           </NDLink>
         ))

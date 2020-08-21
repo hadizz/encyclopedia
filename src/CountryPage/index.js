@@ -41,7 +41,6 @@ const CountryPage = () => {
 
     setInfoSectionData(d1);
     setCurrencyData(d.currencies[0]);
-    console.log('d.capital', d.capital);
     setWeatherData(d.capital);
   }
 
@@ -54,12 +53,11 @@ const CountryPage = () => {
         );
 
         const json = await response.data;
-        console.log('fetch data  ', json);
 
         setDetails(json);
         init(json);
       } catch (error) {
-        console.log('error in fetch data coiuntry page');
+        console.log('error in fetch data country page');
       } finally {
         setLoading(false);
       }
