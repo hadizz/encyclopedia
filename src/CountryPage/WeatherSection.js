@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import moment from 'moment';
 
 import {
   SectionWrapper,
@@ -89,7 +90,7 @@ function WeatherSection({ header, data }) {
       console.log('fState', fState);
       return (
         <DataBox>
-          <DataName>{fState.applicable_date}</DataName>
+          <DataName>{moment(fState.applicable_date).format('dddd')}</DataName>
           <img
             src={`https://www.metaweather.com/static/img/weather/${fState.weather_state_abbr}.svg`}
             height="30"
