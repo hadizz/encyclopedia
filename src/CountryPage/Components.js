@@ -6,7 +6,6 @@ export const CountryPageWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  margin-bottom: 3rem;
   background-color: #e5e5e5;
 
   ${media.greaterThan('large')`
@@ -32,7 +31,7 @@ export const CountryPageInner = styled.div`
 `;
 
 export const SectionWrapper = styled.div`
-  margin-bottom: 2rem;
+  margin: 3rem 0;
 `;
 
 export const DataTableHeader = styled.h2`
