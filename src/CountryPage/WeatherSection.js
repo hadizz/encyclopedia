@@ -82,7 +82,7 @@ function WeatherSection({ header, data }) {
       return <LaodingItem />;
     }
     if (error) {
-      return 'There was an error in fetching data from server';
+      return 'Error: No data found for this city';
     }
     if (states === null) {
       return <LaodingItem />;

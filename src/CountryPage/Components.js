@@ -6,7 +6,6 @@ export const CountryPageWrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  margin-bottom: 3rem;
   background-color: #e5e5e5;
 
   ${media.greaterThan('large')`
@@ -32,7 +31,7 @@ export const CountryPageInner = styled.div`
 `;
 
 export const SectionWrapper = styled.div`
-  margin-bottom: 2rem;
+  margin: 3rem 0;
 `;
 
 export const DataTableHeader = styled.h2`
@@ -49,6 +48,14 @@ export const DataTable = styled.div`
   display: flex;
   flex-direction: column;
 
+  ${media.greaterThan('large')`
+    border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    box-shadow: rgb(0,0,0,0.1) 0px 2px 4px 0px
+  `}
+`;
+
+export const MapWrapper = styled.div`
   ${media.greaterThan('large')`
     border-radius: 10px;
     border: 1px solid #f5f5f5;
