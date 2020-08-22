@@ -16,7 +16,7 @@ const MapSection = ({ header, data }) => {
   return (
     <SectionWrapper>
       <DataTableHeader>{header}</DataTableHeader>
-      <MapWrapper>
+      <MapWrapper style={{ overflow: 'hidden' }}>
         <ReactMapGL
           // eslint-disable-next-line
           {...viewport}
