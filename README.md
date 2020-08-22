@@ -8,7 +8,7 @@ This is a PWA app `(progressive web application)` which we can get information a
 - [x] Show result of countries: user can see the search results and could pick one.
 - [x] Show country info: after choosing a country, user transfered to the information page
 - [x] Show All countries: user can see a list of countries and could click on them to see the info
-- [ ] Show country location: user can see the country location on the map and could interact with the map.
+- [x] Show country location: user can see the country location on the map and could interact with the map.
 - [x] Show country currency: user can see the exchange of the country currency and choose between variant currencies.
 - [x] Show country weather: user can see today weather of the country.
 
