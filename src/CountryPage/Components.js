@@ -55,6 +55,14 @@ export const DataTable = styled.div`
   `}
 `;
 
+export const MapWrapper = styled.div`
+  ${media.greaterThan('large')`
+    border-radius: 10px;
+    border: 1px solid #f5f5f5;
+    box-shadow: rgb(0,0,0,0.1) 0px 2px 4px 0px
+  `}
+`;
+
 export const DataBox = styled.div`
   padding: 10px 8px 10px 8px;
   display: flex;
